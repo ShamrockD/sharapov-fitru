@@ -23,7 +23,7 @@ if DEBUG:
 else:
     allowed_hosts = os.environ.get('DJANGO_ALLOWED_HOSTS', '')
     # ALLOWED_HOSTS = allowed_hosts.split(',') if allowed_hosts else []
-    ALLOWED_HOSTS = ['citylag.ru', 'www.citylag.ru', 'localhost', '127.0.0.1']
+    ALLOWED_HOSTS = ['citylag.ru', 'www.citylag.ru', 'localhost', '127.0.0.1', 'web', 'django']
 
 CSRF_TRUSTED_ORIGINS = os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(',')
 

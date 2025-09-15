@@ -1,13 +1,11 @@
 services:
   web:
     build: .
-    ports:
-      - "8000:8000"
     command: gunicorn --bind 0.0.0.0:8000 sharapov_fit.wsgi:application
     volumes:
-      - .:/app/sharapov_fit
-      - static_volume:/app/sharapov_fit/staticfiles
-      - media_volume:/app/sharapov_fit/media
+      - ./sharapov_fit:/app  # Монтируем код проекта
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
     expose:
       - 8000
     env_file:
@@ -18,13 +16,11 @@ services:
     image: nginx:1.25
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
-      - /etc/letsencrypt/:/etc/letsencrypt/
-      - static_volume:/app/sharapov_fit/staticfiles
-      - media_volume:/app/sharapov_fit/media
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
     ports:
-      - "80:80"
+      - "8080:80"
       - "443:443"
-    # command: /bin/sh -c "rm -f /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
     depends_on:
       - web
     restart: unless-stopped

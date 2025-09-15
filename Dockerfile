@@ -22,6 +22,9 @@ RUN pip install --no-cache-dir --upgrade pip && \
 # Копируем весь проект в контейнер
 COPY . .
 
+# Создаем нужную директорию
+RUN mkdir -p /app/staticfiles
+
 # Собираем статику (если используете)
 RUN python manage.py collectstatic --noinput
 

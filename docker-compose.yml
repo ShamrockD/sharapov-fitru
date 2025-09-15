@@ -6,8 +6,8 @@ services:
     command: gunicorn --bind 0.0.0.0:8000 sharapov_fit.wsgi:application
     volumes:
       - .:/app/sharapov_fit
-      - static_volume:/sharapov_fit/staticfiles
-      - media_volume:/sharapov_fit/media
+      - static_volume:/app/sharapov_fit/staticfiles
+      - media_volume:/app/sharapov_fit/media
     expose:
       - 8000
     env_file:
@@ -18,13 +18,13 @@ services:
     image: nginx:1.25
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
-      - static_volume:/sharapov_fit/staticfiles
-      - media_volume:/sharapov_fit/media
-      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - /etc/letsencrypt/:/etc/letsencrypt/
+      - static_volume:/app/sharapov_fit/staticfiles
+      - media_volume:/app/sharapov_fit/media
     ports:
-      - "8080:80"
-      - "8443:443"
-    command: /bin/sh -c "rm -f /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+      - "80:80"
+      - "443:443"
+    # command: /bin/sh -c "rm -f /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
     depends_on:
       - web
     restart: unless-stopped

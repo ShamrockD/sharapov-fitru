@@ -1,10 +1,6 @@
 # Используем официальный Python образ
 FROM python:3.13-slim-bullseye
 
-# Устанавливаем переменные окружения
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-
 # Устанавливаем системные зависимости
 RUN apt-get update && apt-get install -y \
     gcc \
@@ -12,7 +8,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Создаем и переходим в рабочую директорию
-WORKDIR /app/sharapov_fit
+WORKDIR /app
 
 # Копируем файл с зависимостями и устанавливаем их
 COPY requirements.txt .
@@ -23,7 +19,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
 COPY sharapov_fit/ .
 
 # Создаем нужную директорию
-RUN mkdir -p /sharapov_fit/staticfiles/
+RUN mkdir -p /app/sharapov_fit/staticfiles/
 
 # Собираем статику (если используете)
 RUN python manage.py collectstatic --noinput

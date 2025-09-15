@@ -19,6 +19,7 @@ services:
       - ./sites-enabled:/etc/nginx/sites-enabled:ro
       - static_volume:/app/staticfiles
       - media_volume:/app/media
+      - /etc/letsencrypt:/etc/letsencrypt:ro
     ports:
       - "80:80"
       - "443:443"

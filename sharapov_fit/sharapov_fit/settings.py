@@ -14,7 +14,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'super_secret_key_for_my_django_project')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', '0').lower() in ['1', 'true', 'yes']
+# DEBUG = os.environ.get('DEBUG', '0').lower() in ['1', 'true', 'yes']
+DEBUG = False
 print(f"ДЕБАГ СЕЙЧАС В СОСТОЯНИИ: {DEBUG}")
 # DEBUG = True
 

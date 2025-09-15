@@ -14,9 +14,9 @@ RUN pip install --no-cache-dir --upgrade pip && \
 # Копируем весь проект
 COPY sharapov_fit/ .
 
-RUN mkdir -p /app/staticfiles
-RUN python manage.py collectstatic --noinput
+# RUN mkdir -p /app/staticfiles
+# RUN python manage.py collectstatic --noinput
 
 EXPOSE 8000
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "sharapov_fit.wsgi:application"]
+CMD ["sh", "-c", "python manage.py collectstatic --noinput && gunicorn --bind 0.0.0.0:8000 sharapov_fit.wsgi:application"]

@@ -1,0 +1,108 @@
+{% extends "core/partial/base.html" %}
+{% load static %}
+{% block head_link_block %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="{% static 'css/core/home.css' %}">
+{% endblock %}
+{% block base_body_block %}
+<!-- Первые 2 блока инфо -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="card bg-dark text-white">
+                <img class="card-img" src="https://9b6bfb45-2bd9-42bf-ad07-e1af1c458da3.selstorage.ru/content/7/760209255f8bfbab82ebaf6b24bb1072.jpg" alt="...">
+                <div class="card-img-overlay d-flex flex-column justify-content-end">
+                    <h1 class="card-title">ОНЛАЙН-ТРЕНИРОВКИ ДЛЯ ДОМА И ЗАЛА С DEXAR`ом</h1>
+                    <p class="card-text">Авторские фитнес-программы под разные цели для любого уровня подготовки</p>
+                    <button class="btn btn-primary">
+                        Выбрать программу
+                        <img class="img-fluid" src="https://gymteam.kinescopecdn.net/img/l/2024/vitrina/arrow.svg" alt="">
+                    </button>
+                    <p class="card-text">С нами тренируются уже<br>более 330 000 девушек!</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="card bg-dark text-white">
+                <img src="https://9b6bfb45-2bd9-42bf-ad07-e1af1c458da3.selstorage.ru/content/5/5b56cbd38bd835c191ff90e736718f25.jpg" class="card-img" alt="Фоновое изображение товара">
+                <div class="card-img-overlay d-flex flex-column justify-content-end">
+                    <h1 class="card-title">Название товара</h1>
+                    <p class="card-text">Краткое и привлекательное описание этого замечательного товара.</p>
+                    <a href="#" class="btn btn-primary align-self-start">Подробнее</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Карусель -->
+ <div class="container mt-5">
+    <div id="carouselExampleAutoplay" class="carousel slide" data-bs-ride="carousel" data-bs-interval="1000" style="height: 500px;">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleAutoplay" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleAutoplay" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleAutoplay" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner h-100">
+        <div class="carousel-item active h-100">
+            <a href="#">
+                <img class="img-fluid w-100 h-100"
+                      loading="lazy" 
+                      style="max-height: 500px; object-fit: cover;"
+                      src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/14236/production/_104368428_gettyimages-543560762.jpg.webp" class="d-block w-100" alt="Первый слайд">
+            </a>
+        </div>
+        <div class="carousel-item h-100">
+            <a href="#">
+                <img class="img-fluid w-100 h-100"
+                      loading="lazy" 
+                      style="max-height: 500px; object-fit: cover;"
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQq89rWKaTGLDA5UETfBwVLiauA7hdf33loQ&s" class="d-block w-100" alt="Второй слайд">
+            </a>
+        </div>
+        <div class="carousel-item h-100">
+            <a href="#">
+                <img class="img-fluid w-100 h-100"
+                style="max-height: 500px; object-fit: cover;"
+                      loading="lazy" 
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-F4nmJAQDAn1aIXSSk26qqPmyb1jdCHzgiQ&s" class="d-block w-100" alt="Третий слайд">
+        </a>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplay" data-bs-slide="prev">
+  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Previous</span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplay" data-bs-slide="next">
+  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Next</span>
+</button>
+  </div>
+ </div>
+
+<!-- Конец Карусель -->
+
+
+
+
+
+<!-- {% for promo in carousel_objects %}
+<div class="promo-item">
+    <h3>{{ promo.title }}</h3>
+    <p>{{ promo.short_description }}</p>
+    
+    {% if promo.image %}
+        <img src="{{ promo.image.url }}" 
+             alt="{{ promo.title }}"
+             class="promo-image"
+             width="300"
+             height="200">
+    {% else %}
+        <p>Изображение отсутствует</p>
+    {% endif %}
+    
+    {% if promo.is_active_promo %}
+        <span class="active-badge">Активно</span>
+    {% endif %}
+</div>
+{% endfor %} -->
+{% endblock %}

@@ -1,0 +1,21 @@
+.card-img-overlay {
+    overflow: hidden;
+    word-break: break-word;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.card-title {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+}
+
+.card-text {
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    margin-bottom: 0.5rem;
+    word-break: break-word;
+}
+

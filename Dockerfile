@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Создаем и переходим в рабочую директорию
-WORKDIR /app/sharapov_fit
+WORKDIR /sharapov_fit
 
 # Копируем файл с зависимостями и устанавливаем их
 COPY requirements.txt .

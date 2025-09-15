@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Создаем и переходим в рабочую директорию
-WORKDIR /app/sharapov_fit
+WORKDIR /app
 
 # Копируем файл с зависимостями и устанавливаем их
 COPY requirements.txt .
@@ -20,12 +20,12 @@ RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
 # Копируем весь проект в контейнер
-COPY sharapov_fit/ .
+COPY . .
 
-# Создаем нужную директорию
-RUN mkdir -p /app/sharapov_fit/staticfiles/
+# Создаем нужные директории
+RUN mkdir -p staticfiles media
 
-# Собираем статику (если используете)
+# Собираем статику
 RUN python manage.py collectstatic --noinput
 
 # Открываем порт

@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure-u#_y79sn*q8_0z-0u=+u+ntsdaj!-4ystjr--0q@%eohzw0)^g'
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-u#_y79sn*q8_0z-0u=+u+ntsdaj!-4ystjr--0q@%eohzw0')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'super_secret_key_for_my_django_project')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', '0').lower() in ['1', 'true', 'yes']
@@ -139,18 +139,18 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 # Для правильного определения IP
-IPWARE_META_PRECEDENCE_ORDER = (
-    'HTTP_X_FORWARDED_FOR', 
-    'X_FORWARDED_FOR', 
-    'HTTP_CLIENT_IP',
-    'HTTP_X_REAL_IP',
-    'HTTP_X_FORWARDED',
-    'HTTP_X_CLUSTER_CLIENT_IP',
-    'HTTP_FORWARDED_FOR',
-    'HTTP_FORWARDED',
-    'HTTP_VIA',
-    'REMOTE_ADDR'
-)
+# IPWARE_META_PRECEDENCE_ORDER = (
+#     'HTTP_X_FORWARDED_FOR', 
+#     'X_FORWARDED_FOR', 
+#     'HTTP_CLIENT_IP',
+#     'HTTP_X_REAL_IP',
+#     'HTTP_X_FORWARDED',
+#     'HTTP_X_CLUSTER_CLIENT_IP',
+#     'HTTP_FORWARDED_FOR',
+#     'HTTP_FORWARDED',
+#     'HTTP_VIA',
+#     'REMOTE_ADDR'
+# )
 
 # Условно применяем HTTPS настройки только в production
 if not DEBUG:

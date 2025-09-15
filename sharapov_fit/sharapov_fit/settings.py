@@ -16,11 +16,12 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'super_secret_key_for_my_django_projec
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get('DEBUG', '0').lower() in ['1', 'true', 'yes']
 DEBUG = False
-print(f"ДЕБАГ СЕЙЧАС В СОСТОЯНИИ: {DEBUG}")
+#print(f"ДЕБАГ СЕЙЧАС В СОСТОЯНИИ: {DEBUG}")
 # DEBUG = True
 
 if DEBUG:
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+    # ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+    ALLOWED_HOSTS = ['*']
 else:
     allowed_hosts = os.environ.get('DJANGO_ALLOWED_HOSTS', '')
     # ALLOWED_HOSTS = allowed_hosts.split(',') if allowed_hosts else []
@@ -160,8 +161,8 @@ if not DEBUG:
     # SECURE_CONTENT_TYPE_NOSNIFF = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
-    SECURE_SSL_REDIRECT = False
-    # SECURE_SSL_REDIRECT = True
+    # SECURE_SSL_REDIRECT = False
+    SECURE_SSL_REDIRECT = True
     USE_X_FORWARDED_HOST = True
     USE_X_FORWARDED_PORT = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

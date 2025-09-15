@@ -67,6 +67,16 @@
                       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-F4nmJAQDAn1aIXSSk26qqPmyb1jdCHzgiQ&s" class="d-block w-100" alt="Третий слайд">
         </a>
         </div>
+        {% for carousel_image in carousel_objects %}
+        <div class="carousel-item h-100">
+            <a href="#">
+                <img class="img-fluid w-100 h-100"
+                style="max-height: 500px; object-fit: cover;"
+                      loading="lazy" 
+                      src="{{ static 'carousel_image.image.url' }}" class="d-block w-100" alt="Третий слайд">
+            </a>
+        </div>
+        {% endfor %}
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplay" data-bs-slide="prev">
   <span class="carousel-control-prev-icon" aria-hidden="true"></span>

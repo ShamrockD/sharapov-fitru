@@ -87,6 +87,13 @@
     <div class="row" style="text-align: center;">
         <h1>Собственный пример Дексара Максового<br> — лучший аргумент эффективности</h1>
     </div>
+    {% for self_introduces_image in self_introduces_images %}
+        <div class="row mt-5">
+            <div class="col-sm-12 col-md-3">
+                <img class="img-fluid w-100" src="{{ self_introduces_image.image.url }}">
+            </div>
+        </div>
+    {% endfor %}
     <div class="row mt-5">
         <div class="col-sm-12 col-md-3">
             <img class="img-fluid w-100" src="https://tn.fishki.net/26/upload/post/2018/12/22/2813283/17240373-2233686422c4576e7cd68e14ba41f09d-800.png">

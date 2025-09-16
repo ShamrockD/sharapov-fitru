@@ -83,11 +83,14 @@
 </div>
 <!-- Конец Карусель -->
 <!-- Собственный пример -->
-<div class="container col-3 col-md-6 col-sm-12">
+<div class="container">
     <div class="row" style="text-align: center;">
         <h1>Собственный пример Дексара Максового<br> — лучший аргумент эффективности</h1>
+        <p>
+            После первых родов в 2019 году и вторых в 2022 похудела с 80 кг до 60 кг менее, чем за 100 дней благодаря своей авторской системе тренировок
+        </p>
     </div>
-    <div class="row mt-5">
+    <div class="row">
             {% for self_introduces_image in self_introduces_images %}
             <div class="col-sm-12 col-md-3">
                 <img class="img-fluid w-100" src="{{ self_introduces_image.image.url }}">
@@ -99,4 +102,49 @@
         </div>
 </div>
 <!-- Конец Собственный пример -->
+<!-- Блок фитнес программ -->
+<div class="container">
+    <div class="row" style="text-align: center;">
+        <h1>Выберите любую <br>из 8 фитнес-программ под свою цель</h1>
+    </div>
+    <div class="row">
+        <div id="programs-category-column" class="col col-sm-12">
+            <div class="row">
+                {% if list_of_courses|length > 0 %}
+                    {% for categorie in list_of_course_categories %}
+                    <div class="col col-sm-12 col-md-6">
+                        <h1>{{ categorie.title }}</h1>
+                        <p>{{ categorie.short_description }}</p>
+                    </div>
+                    {% for course in categorie.course_set.all %}
+                    <div class="col col-sm-12 col-md-3">
+                        <div class="card bg-dark text-white">
+                            <img src="{{ course.course_logo.url }}" class="card-img w-100" alt="Фоновое изображение товара">
+                            <div class="card-img-overlay d-flex flex-column justify-content-end">
+                                <h1 class="card-title">{{ course.title }}</h1>
+                                <p class="card-text">{{ course.short_description }}</p>
+                                <a href="#" class="btn btn-primary align-self-start">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% endfor %}
+                {% endif %}
+                <!-- <div class="col col-sm-12 col-md-6">
+                    <h1>МАРАФОНЫ С ДОМАШНИМИ ТРЕНИРОВКАМИ</h1>
+                    <p>Если хотите быстро получить первые результаты</p>
+                </div>
+                <div class="col col-sm-12 col-md-6">
+                    <div class="col col-sm-12 col-md-6">
+                        <p>Здесь будут описания, карточки и тд</p>
+                    </div>
+                    <div class="col col-sm-12 col-md-6">
+                        <p>Здесь будут описания, карточки и тд</p>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Конец Блока фитнес программ -->
 {% endblock %}

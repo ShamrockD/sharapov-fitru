@@ -1,7 +1,7 @@
 services:
   web:
     build: .
-    command: sh -c "python manage.py collectstatic --noinput && gunicorn --bind 0.0.0.0:8000 sharapov_fit.wsgi:application"
+    command: sh -c "python manage.py collectstatic --noinput && python manage.py migrate --noinput && gunicorn --bind 0.0.0.0:8000 sharapov_fit.wsgi:application"
     volumes:
       - ./sharapov_fit:/app  # Монтируем код проекта
       - static_volume:/app/staticfiles

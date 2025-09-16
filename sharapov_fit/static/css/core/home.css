@@ -19,3 +19,9 @@
     word-break: break-word;
 }
 
+#programs-category-column {
+    /* border-color: black;
+    border: solid 2px; */
+    background-color: rgb(245, 245, 245);
+    border-radius: 15px;
+}

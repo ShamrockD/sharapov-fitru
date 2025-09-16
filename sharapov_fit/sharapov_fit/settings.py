@@ -2,6 +2,7 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 
+
 load_dotenv()
 
 
@@ -14,8 +15,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'super_secret_key_for_my_django_project')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = os.environ.get('DEBUG', '0').lower() in ['1', 'true', 'yes']
-DEBUG = False
+DEBUG = os.environ.get('DEBUG', '0').lower() in ['1', 'true', 'yes']
+# DEBUG = False
 #print(f"ДЕБАГ СЕЙЧАС В СОСТОЯНИИ: {DEBUG}")
 # DEBUG = True
 
@@ -24,10 +25,11 @@ if DEBUG:
     ALLOWED_HOSTS = ['*']
 else:
     allowed_hosts = os.environ.get('DJANGO_ALLOWED_HOSTS', '')
-    # ALLOWED_HOSTS = allowed_hosts.split(',') if allowed_hosts else []
-    ALLOWED_HOSTS = ['citylag.ru', 'www.citylag.ru', 'localhost', '127.0.0.1', 'web', 'django']
+    ALLOWED_HOSTS = allowed_hosts.split(',') if allowed_hosts else ['*']
+    # ALLOWED_HOSTS = ['citylag.ru', 'www.citylag.ru', 'localhost', '127.0.0.1', 'web', 'django']
 
-CSRF_TRUSTED_ORIGINS = os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(',')
+if not DEBUG:
+    CSRF_TRUSTED_ORIGINS = os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(',')
 
 # Application definition
 
@@ -41,6 +43,7 @@ INSTALLED_APPS = [
     "core",
     "promo",
     "courses",
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [
@@ -75,22 +78,40 @@ WSGI_APPLICATION = 'sharapov_fit.wsgi.application'
 
 # Database
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': os.environ.get('DB_PORT'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.environ.get('DB_NAME'),
+#         'USER': os.environ.get('DB_USER'),
+#         'PASSWORD': os.environ.get('DB_PASSWORD'),
+#         'HOST': os.environ.get('DB_HOST'),
+#         'PORT': os.environ.get('DB_PORT'),
+#     }
+# }
 
-if not all([DATABASES['default']['NAME'], DATABASES['default']['USER'], DATABASES['default']['HOST']]):
-    DATABASES['default'] = {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if not DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ.get('DB_NAME'),
+            'USER': os.environ.get('DB_USER'),
+            'PASSWORD': os.environ.get('DB_PASSWORD'),
+            'HOST': os.environ.get('DB_HOST'),
+            'PORT': os.environ.get('DB_PORT'),
+        }
     }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+# if not all([DATABASES['default']['NAME'], DATABASES['default']['USER'], DATABASES['default']['HOST']]):
+#     DATABASES['default'] = {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
 
 
 # Password validation
@@ -136,23 +157,6 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
-
-# Для правильного определения IP
-# IPWARE_META_PRECEDENCE_ORDER = (
-#     'HTTP_X_FORWARDED_FOR', 
-#     'X_FORWARDED_FOR', 
-#     'HTTP_CLIENT_IP',
-#     'HTTP_X_REAL_IP',
-#     'HTTP_X_FORWARDED',
-#     'HTTP_X_CLUSTER_CLIENT_IP',
-#     'HTTP_FORWARDED_FOR',
-#     'HTTP_FORWARDED',
-#     'HTTP_VIA',
-#     'REMOTE_ADDR'
-# )
 
 # Условно применяем HTTPS настройки только в production
 if not DEBUG:

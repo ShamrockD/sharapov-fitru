@@ -35,84 +35,72 @@
     </div>
 </div>
 <!-- Карусель -->
- <div class="container mt-5">
-    <div id="carouselExampleAutoplay" class="carousel slide" data-bs-ride="carousel" data-bs-interval="1000" style="height: 500px;">
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleAutoplay" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleAutoplay" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleAutoplay" data-bs-slide-to="2" aria-label="Slide 3"></button>
+<div class="container mt-5">
+    {% if carousel_objects|length > 0 %}
+    <div id="generated_carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" style="height: 500px;">
+        <!-- Индикаторы -->
+        <div class="carousel-indicators">
+            {% for carousel_image in carousel_objects %}
+            <button type="button" data-bs-target="#generated_carousel" data-bs-slide-to="{{ forloop.counter0}}" 
+                    {% if forloop.first %}class="active" aria-current="true"{% endif %} 
+                    aria-label="Slide {{ forloop.counter }}"></button>
+            {% endfor %}
+        </div>
+        <!-- Конец Индикаторы -->
+        
+        <!-- Изображения -->
+        <div class="carousel-inner h-100">
+            {% for carousel_image in carousel_objects %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %} h-100">
+                <a href="#">
+                    <img src="{{ carousel_image.image.url }}" 
+                         class="d-block w-100 h-100 img-fluid"
+                         style="object-fit: cover;"
+                         alt="{{ carousel_image.title|default:'Carousel image' }}"
+                         loading="lazy">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- Конец Изображения -->
+        
+        <!-- Элементы управления -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#generated_carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#generated_carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+        <!-- Конец Элементы управления -->
     </div>
-    <div class="carousel-inner h-100">
-        <div class="carousel-item active h-100">
-            <a href="#">
-                <img class="img-fluid w-100 h-100"
-                      loading="lazy" 
-                      style="max-height: 500px; object-fit: cover;"
-                      src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/14236/production/_104368428_gettyimages-543560762.jpg.webp" class="d-block w-100" alt="Первый слайд">
-            </a>
-        </div>
-        <div class="carousel-item h-100">
-            <a href="#">
-                <img class="img-fluid w-100 h-100"
-                      loading="lazy" 
-                      style="max-height: 500px; object-fit: cover;"
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQq89rWKaTGLDA5UETfBwVLiauA7hdf33loQ&s" class="d-block w-100" alt="Второй слайд">
-            </a>
-        </div>
-        <div class="carousel-item h-100">
-            <a href="#">
-                <img class="img-fluid w-100 h-100"
-                style="max-height: 500px; object-fit: cover;"
-                      loading="lazy" 
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-F4nmJAQDAn1aIXSSk26qqPmyb1jdCHzgiQ&s" class="d-block w-100" alt="Третий слайд">
-        </a>
-        </div>
-        {% for carousel_image in carousel_objects %}
-        <div class="carousel-item h-100">
-            <a href="#">
-                <img class="img-fluid w-100 h-100"
-                style="max-height: 500px; object-fit: cover;"
-                      loading="lazy" 
-                      src="{{ carousel_image.image.url }}" class="d-block w-100" alt="Третий слайд">
-            </a>
-        </div>
-        {% endfor %}
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplay" data-bs-slide="prev">
-  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-  <span class="visually-hidden">Previous</span>
-</button>
-<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplay" data-bs-slide="next">
-  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-  <span class="visually-hidden">Next</span>
-</button>
-  </div>
- </div>
-
-<!-- Конец Карусель -->
-
-
-
-
-
-<!-- {% for promo in carousel_objects %}
-<div class="promo-item">
-    <h3>{{ promo.title }}</h3>
-    <p>{{ promo.short_description }}</p>
-    
-    {% if promo.image %}
-        <img src="{{ promo.image.url }}" 
-             alt="{{ promo.title }}"
-             class="promo-image"
-             width="300"
-             height="200">
     {% else %}
-        <p>Изображение отсутствует</p>
-    {% endif %}
-    
-    {% if promo.is_active_promo %}
-        <span class="active-badge">Активно</span>
+    <div class="alert alert-info">
+        Нет изображений для отображения в карусели
+    </div>
     {% endif %}
 </div>
-{% endfor %} -->
+<!-- Конец Карусель -->
+<!-- Собственный пример -->
+<div class="container col-3 col-md-6 col-sm-12">
+    <div class="row" style="text-align: center;">
+        <h1>Собственный пример Дексара Максового<br> — лучший аргумент эффективности</h1>
+    </div>
+    <div class="row mt-5">
+        <div class="col-sm-12 col-md-3">
+            <img class="img-fluid w-100" src="https://tn.fishki.net/26/upload/post/2018/12/22/2813283/17240373-2233686422c4576e7cd68e14ba41f09d-800.png">
+        </div>
+        <div class="col-sm-12 col-md-3">
+            <img class="img-fluid w-100" src="https://tn.fishki.net/26/upload/post/2018/12/22/2813283/17240373-2233686422c4576e7cd68e14ba41f09d-800.png">
+        </div>
+        <div class="col-sm-12 col-md-3">
+            <img class="img-fluid w-100" src="https://tn.fishki.net/26/upload/post/2018/12/22/2813283/17240373-2233686422c4576e7cd68e14ba41f09d-800.png">
+        </div>
+        <div class="col-sm-12 col-md-3">
+            <img class="img-fluid w-100" src="https://tn.fishki.net/26/upload/post/2018/12/22/2813283/17240373-2233686422c4576e7cd68e14ba41f09d-800.png">
+        </div>
+    </div>
+</div>
+<!-- Конец Собственный пример -->
 {% endblock %}

@@ -1,0 +1,80 @@
+{% load static %}
+{% block head_link_block %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="{% static 'css/core/partial/footer.css' %}" rel="stylesheet">
+{% endblock %}
+<footer class="modern-footer pt-5 mt-2">
+    <div class="container footer-content">
+        <div class="row g-4 mb-5">
+            <!-- Company Info -->
+            <div class="col-lg-4 col-md-6">
+                <a href="#" class="footer-logo d-block mb-4">
+                    BodyRehab<span class="text-primary">.</span>
+                </a>
+                <p class="text-muted mb-4">Крутотенечка в тренях с Дексаром</p>
+                <ul class="contact-info mb-4">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Качалкова Улица, д. 777<br>Жимлежево, 666999</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>ya_na_kache@kachalko.com</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-lg-4 col-md-6">
+                <h3 class="footer-title">Всякие ссылочки</h3>
+                <ul class="quick-links">
+                    <li><a href="#">Сервисы</a></li>
+                    <li><a href="#">О нас</a></li>
+                    <li><a href="#">Последние проекты</a></li>
+                    <li><a href="#">Последние новости</a></li>
+                    <li><a href="#">Поддержка пользователей</a></li>
+                    <li><a href="#">контактная информация</a></li>
+                    <li><a href="#">Политика конфиденциальности</a></li>
+                    <li><a href="#">Правила пользования</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="col-lg-4 col-md-12">
+                <h3 class="footer-title">Оставайтесь на связи</h3>
+                <p class="text-muted mb-4">Лойс, пиписка, досвидоний!</p>
+                <form class="mb-4">
+                    <div class="mb-3">
+                        <input type="email" class="form-control newsletter-input" placeholder="Your email address">
+                    </div>
+                    <button type="submit" class="btn btn-subscribe text-white w-100">Подписаться</button>
+                </form>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row py-4">
+                <div class="col-md-6 text-center text-md-start">
+                    <p>&copy; 2025 BodyRehab. Все права защищены</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p>Сделано <i class="fas fa-heart text-danger"></i><a href="#">Топчиком</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

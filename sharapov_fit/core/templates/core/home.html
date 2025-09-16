@@ -91,23 +91,12 @@
             {% for self_introduces_image in self_introduces_images %}
             <div class="col-sm-12 col-md-3">
                 <img class="img-fluid w-100" src="{{ self_introduces_image.image.url }}">
+                {% if self_introduces_image.title %}
+                <p>{{ self_introduces_image.title }}</p>
+                {% endif %}
             </div>
             {% endfor %}
         </div>
-    <div class="row mt-5">
-        <div class="col-sm-12 col-md-3">
-            <img class="img-fluid w-100" src="https://tn.fishki.net/26/upload/post/2018/12/22/2813283/17240373-2233686422c4576e7cd68e14ba41f09d-800.png">
-        </div>
-        <div class="col-sm-12 col-md-3">
-            <img class="img-fluid w-100" src="https://tn.fishki.net/26/upload/post/2018/12/22/2813283/17240373-2233686422c4576e7cd68e14ba41f09d-800.png">
-        </div>
-        <div class="col-sm-12 col-md-3">
-            <img class="img-fluid w-100" src="https://tn.fishki.net/26/upload/post/2018/12/22/2813283/17240373-2233686422c4576e7cd68e14ba41f09d-800.png">
-        </div>
-        <div class="col-sm-12 col-md-3">
-            <img class="img-fluid w-100" src="https://tn.fishki.net/26/upload/post/2018/12/22/2813283/17240373-2233686422c4576e7cd68e14ba41f09d-800.png">
-        </div>
-    </div>
 </div>
 <!-- Конец Собственный пример -->
 {% endblock %}

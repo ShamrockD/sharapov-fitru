@@ -102,49 +102,53 @@
         </div>
 </div>
 <!-- Конец Собственный пример -->
+<!-- Блок описательный и сравнение -->
+<div class="container sm-12">
+    <div class="row">
+        <div class="col col-md-6" style="text-align: left;">
+            <p>Путь Дексара начался с доки 2 <br> продолжился в ситилаге <br> и не заканчивается</p>
+        </div>
+        {% if self_before_after %}
+        <div class="col col-md-6" style="text-align: center;">
+            <video width="320" height="240" controls autoplay muted loop>
+                <source src="{{ self_before_after.video.url }}" type="video/mp4">
+                Ваш браузер не поддерживает этот TAG.
+            </video>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<!-- Конец Блок описательный и сравнение -->
 <!-- Блок фитнес программ -->
 <div class="container">
     <div class="row" style="text-align: center;">
         <h1>Выберите любую <br>из 8 фитнес-программ под свою цель</h1>
     </div>
-    <div class="row">
-        <div id="programs-category-column" class="col col-sm-12">
-            <div class="row">
-                {% if list_of_courses|length > 0 %}
-                    {% for categorie in list_of_course_categories %}
-                    <div class="col col-sm-12 col-md-6">
-                        <h1>{{ categorie.title }}</h1>
-                        <p>{{ categorie.short_description }}</p>
-                    </div>
-                    {% for course in categorie.course_set.all %}
-                    <div class="col col-sm-12 col-md-3">
-                        <div class="card bg-dark text-white">
-                            <img src="{{ course.course_logo.url }}" class="card-img w-100" alt="Фоновое изображение товара">
-                            <div class="card-img-overlay d-flex flex-column justify-content-end">
-                                <h1 class="card-title">{{ course.title }}</h1>
-                                <p class="card-text">{{ course.short_description }}</p>
-                                <a href="#" class="btn btn-primary align-self-start">Подробнее</a>
-                            </div>
+    <!-- Блок карточек программ -->
+    {% if list_of_courses|length > 0 %}
+    {% for categorie in list_of_course_categories %}
+    <div id="programs-category-row" class="row" style="margin: 3px;">
+        <div class="col col-sm-12 col-md-6">
+            <h1>{{ categorie.title }}</h1>
+            <p>{{ categorie.short_description }}</p>
+        </div>
+        <div class="col col-sm-12 col-md-4">
+            {% for course in categorie.course_set.all %}
+                <!-- <div class="col col-sm-12 col-md-3"> -->
+                    <div class="card bg-dark text-white m-2">
+                        <img src="{{ course.course_logo.url }}" class="card-img w-100" alt="Фоновое изображение товара">
+                        <div class="card-img-overlay d-flex flex-column justify-content-end">
+                            <h1 class="card-title">{{ course.title }}</h1>
+                            <p class="card-text">{{ course.short_description }}</p>
+                            <a href="#" class="btn btn-primary align-self-start">Подробнее</a>
                         </div>
                     </div>
-                    {% endfor %}
-                    {% endfor %}
-                {% endif %}
-                <!-- <div class="col col-sm-12 col-md-6">
-                    <h1>МАРАФОНЫ С ДОМАШНИМИ ТРЕНИРОВКАМИ</h1>
-                    <p>Если хотите быстро получить первые результаты</p>
-                </div>
-                <div class="col col-sm-12 col-md-6">
-                    <div class="col col-sm-12 col-md-6">
-                        <p>Здесь будут описания, карточки и тд</p>
-                    </div>
-                    <div class="col col-sm-12 col-md-6">
-                        <p>Здесь будут описания, карточки и тд</p>
-                    </div>
-                </div> -->
-            </div>
+                <!-- </div> -->
+            {% endfor %}
         </div>
     </div>
+    {% endfor %}
+    {% endif %}
 </div>
 <!-- Конец Блока фитнес программ -->
 {% endblock %}

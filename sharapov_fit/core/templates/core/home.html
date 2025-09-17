@@ -93,7 +93,7 @@
     <div class="row">
             {% for self_introduces_image in self_introduces_images %}
             <div class="col-sm-12 col-md-3">
-                <img loading="lazy" class="img-fluid w-100" src="{{ self_introduces_image.image.url }}">
+                <img id="dexars-self-example-{{ self_introduces_image.title|slugify }}" loading="lazy" class="img-fluid w-100" src="{{ self_introduces_image.image.url }}">
                 {% if self_introduces_image.title %}
                 <p>{{ self_introduces_image.title }}</p>
                 {% endif %}
@@ -136,18 +136,18 @@
             <div class="row">
             {% for course in categorie.course_set.all %}
                     <div class="col-sm-12 col-md-6 mb-4">
-                    <div class="card bg-dark text-white h-100 m-2">
-                        <img loading="lazy" 
-                        src="{{ course.course_logo.url }}" 
-                        class="card-img w-100" 
-                        style="height: 200px; object-fit: cover;"
-                        alt="Фоновое изображение товара">
-                        <div class="card-img-overlay d-flex flex-column justify-content-end">
-                            <h1 class="card-title">{{ course.title }}</h1>
-                            <p class="card-text">{{ course.short_description }}</p>
-                            <a href="#" class="btn btn-primary align-self-start">Подробнее</a>
+                        <div id="course-card-{{ course.title|slugify }}" class="card bg-dark text-white h-100 m-2">
+                            <img loading="lazy" 
+                            src="{{ course.course_logo.url }}" 
+                            class="card-img w-100" 
+                            style="height: 200px; object-fit: cover;"
+                            alt="Фоновое изображение товара">
+                            <div class="card-img-overlay d-flex flex-column justify-content-end">
+                                <h1 class="card-title">{{ course.title }}</h1>
+                                <p class="card-text">{{ course.short_description }}</p>
+                                <a href="#" class="btn btn-primary align-self-start">Подробнее</a>
+                            </div>
                         </div>
-                    </div>
                     </div>
             {% endfor %}
             </div>

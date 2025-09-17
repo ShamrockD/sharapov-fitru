@@ -122,11 +122,12 @@
 <!-- Блок фитнес программ -->
 <div class="container">
     <div class="row" style="text-align: center;">
-        <h1>Выберите любую <br>из 8 фитнес-программ под свою цель</h1>
+        <h1>Выберите любую <br>из {{ list_of_courses|length }} фитнес-программ под свою цель</h1>
     </div>
     <!-- Блок карточек программ -->
     {% if list_of_courses|length > 0 %}
     {% for categorie in list_of_course_categories %}
+    {% if categorie.course_set.all|length > 0 %}
     <div id="programs-category-row" class="row" style="margin: 3px;">
         <div class="col-sm-12 col-md-6">
             <h1>{{ categorie.title }}</h1>
@@ -153,6 +154,7 @@
             </div>
         </div>
     </div>
+    {% endif %}
     {% endfor %}
     {% endif %}
 </div>
